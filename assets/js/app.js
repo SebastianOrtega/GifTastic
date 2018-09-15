@@ -3,14 +3,19 @@ let animales = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "ferret"
 $(document).ready(function () {
 
 
+    function populateButtons() {
 
-    for (let i = 0; i < animales.length; i++) {
-        let newButton = $("<button>");
-        newButton.addClass("btnHeader btn btn-info");
-        newButton.attr("data-animal", animales[i]);
-        newButton.text(animales[i]);
-        $(".header").append(newButton);
+        $(".header").empty();
+        for (let i = 0; i < animales.length; i++) {
+            let newButton = $("<button>");
+            newButton.addClass("btnHeader btn btn-info");
+            newButton.attr("data-animal", animales[i]);
+            newButton.text(animales[i]);
+            $(".header").append(newButton);
+        }
+
     }
+
 
     // $('.header').on('click', '.answer', function (event) {
 
@@ -19,8 +24,8 @@ $(document).ready(function () {
     var API_KEY = "dc6zaTOxFJmzC";
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=";
 
-
-    http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
+    populateButtons();
+    https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
 
 
     $(".btnHeader").click(function () {
@@ -35,7 +40,7 @@ $(document).ready(function () {
             console.log(response.data[0].rating);
             console.log(response.data[0].images.fixed_height.url);
             console.log(response.data[0].images.fixed_height_still.url);
-            $(".imagenes").empty();
+            //$(".imagenes").empty();
             for (let n = 0; n < response.data.length; n++) {
                 let imagenContainer = $("<div>");
                 imagenContainer.addClass("imgContainer");
@@ -51,7 +56,7 @@ $(document).ready(function () {
                 imagen.attr("id", "imagen-" + n);
                 imagen.attr("src", response.data[n].images.fixed_height_still.url);
                 imagenContainer.append(imagen);
-                $(".imagenes").append(imagenContainer);
+                $(".imagenes").prepend(imagenContainer);
             }
         });
     });
@@ -87,6 +92,9 @@ $(document).ready(function () {
     $("#boton").click(function () {
 
         let nuevo = $("#search").val().trim();
+        animales.push(nuevo);
+        populateButtons();
+
         console.log(nuevo);
 
     });
