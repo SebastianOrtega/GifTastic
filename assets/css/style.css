@@ -1,0 +1,25 @@
+.header{
+    margin: 2%;
+}
+
+.forma{
+    margin-top: 5%;
+    float: right;
+}
+
+.btnHeader{
+    margin: 5px;
+}
+
+.imgContainer{
+    float: left;
+    margin: 20px;
+
+}
+.img{
+    display: inline;
+}
+
+.imagenes{
+    max-width: 60%;
+}
