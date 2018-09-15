@@ -28,8 +28,8 @@ $(document).ready(function () {
     https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5"
 
 
-    $(".btnHeader").click(function () {
-
+    // $(".btnHeader").click(function () {
+    $(document).on('click', '.btnHeader', function (event) {
         let seleccion = $(this).attr("data-animal");
         console.log(seleccion);
         $.ajax({
