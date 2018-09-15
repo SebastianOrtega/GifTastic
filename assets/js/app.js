@@ -41,6 +41,8 @@ $(document).ready(function () {
                 imagenContainer.addClass("imgContainer");
                 imagenContainer.attr("data-still", response.data[n].images.fixed_height_still.url);
                 imagenContainer.attr("data-moving", response.data[n].images.fixed_height.url);
+                imagenContainer.attr("data-actual", "still");
+                imagenContainer.attr("id", "contenedor-" + n);
                 let rating = $("<p>");
                 rating.text("Rating: " + response.data[n].rating);
                 imagenContainer.append(rating);
@@ -56,13 +58,29 @@ $(document).ready(function () {
 
 
 
+
     $('.imagenes').on('click', '.imgContainer', function (event) {
 
+        let toChange = "#" + event.currentTarget.childNodes[1].id;
+        let still = event.currentTarget.attributes[1].value;
+        let moving = event.currentTarget.attributes[2].value;
+        let status = event.currentTarget.attributes[3].value;
+        let container = "#" + event.currentTarget.id;
+
+        if (status == "still") {
+            $(toChange).attr("src", moving);
+            $(container).attr("data-actual", "moving");
+        } else {
+            $(toChange).attr("src", still);
+            $(container).attr("data-actual", "still");
+        }
+
+
         console.log(event.currentTarget.childNodes[1].id);
+        console.log(event);
+
 
     });
-
-
 
 
 
